@@ -19,5 +19,17 @@
             $con = null;
             return 'correcto';
         }
+        public function ultimaCancion() {
+            $con = $this -> conectar() -> query('SELECT MAX(idcancion) as ultima_fila FROM him_verde');
+            $dato = $con -> fetch(PDO::FETCH_OBJ) -> ultima_fila;
+            $con = null;
+            return $dato;
+        }
+        public function existeCancion($id) {
+            $con = $this -> conectar() -> prepare('SELECT idcancion FROM him_verde WHERE idcancion=:id');
+            $con -> execute([':id' => $id]);
+            $count = $con -> rowCount();
+            return $count;
+        }
     }
 ?>
