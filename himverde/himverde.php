@@ -13,6 +13,12 @@
             $con = null;
             return $datos;
         }
+        public function nuevaCancion($id, $titulo, $autor, $nota, $letra, $enlace) {
+            $con = $this -> conectar() -> prepare('INSERT INTO him_verde (idcancion, titulo, autor, nota, letra, enlace) VALUES (:idcancion, :titulo, :autor, :nota, :letra, :enlace);');
+            $con -> execute([':idcancion' => $id,':titulo'=> $titulo, ':autor'=> $autor, ':nota'=> $nota, ':letra'=> $letra, ':enlace' => $enlace]);
+            $con = null; 
+            return true;
+        }
         public function editarCancion($id, $titulo, $autor, $nota, $letra, $enlace) {
             $con = $this -> conectar() -> prepare('UPDATE him_verde SET titulo=:titulo, autor=:autor, nota=:nota, letra=:letra, enlace=:enlace WHERE idcancion=:id;');
             $con -> execute([':titulo' => $titulo, ':autor' => $autor, ':nota' => $nota, ':letra' => $letra, ':enlace' => $enlace, ':id' => $id]);
@@ -29,6 +35,7 @@
             $con = $this -> conectar() -> prepare('SELECT idcancion FROM him_verde WHERE idcancion=:id');
             $con -> execute([':id' => $id]);
             $count = $con -> rowCount();
+            $con = null;
             return $count;
         }
     }
