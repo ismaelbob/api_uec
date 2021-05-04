@@ -24,7 +24,7 @@
         } else {
             $respuesta = [
                 'estado' => 'incorrecto',
-                'usuario' => $usuario,
+                'usuario' => $user,
                 'pass' => $pass,
             ];
         }
