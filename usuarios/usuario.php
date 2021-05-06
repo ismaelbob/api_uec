@@ -5,13 +5,17 @@
             $pasMD5 = md5($pas);
             $con = $this -> conectar() -> prepare("SELECT * FROM usuario WHERE usuario= BINARY :us AND pass=:pa");
             $con -> execute(["us"=>$nom, "pa"=>$pasMD5]);
-
-            if($con -> rowCount()){
-                return true;
-            }else{
-                return false;
-            }
+            $dato = $con -> fetch(PDO::FETCH_OBJ);
             $con = null;
+            return $dato;
+        }
+
+        public function traerDatosUsuario($user) {
+            $con = $this -> conectar() -> prepare("SELECT * FROM usuario WHERE usuario= BINARY :us");
+            $con -> execute(["us" => $user]);
+            $dato = $con -> fetch(PDO::FETCH_OBJ);
+            $con = null;
+            return $dato;
         }
     }
 ?>

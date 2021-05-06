@@ -1,13 +1,16 @@
 <?php
     include_once 'usuario.php';
+    include_once 'sesion.php';
     $usuario = new Usuario();
-    header('Access-control-Allow-Origin: *');
+    $sesion = new Sesion();
+
+    header('Access-Control-Allow-Origin: *');
 
     $data = json_decode(file_get_contents('php://input'));
 
     if ($data === null) {
         $respuesta = [
-            'estado' => 'No hay datos'
+            'estado' => 'Ho nay datos'
         ];
     } else {
         $user = $data -> usuario;
@@ -15,18 +18,21 @@
 
         $resultado = $usuario -> existeUsuario($user, $pass);
 
-        if ($resultado) {
-            $respuesta = [
-                'estado' => 'correcto',
-                'usuario' => $user,
-                'pass' => $pass,
-            ];
-        } else {
+        if (!$resultado) {
             $respuesta = [
                 'estado' => 'incorrecto',
                 'usuario' => $user,
                 'pass' => $pass,
             ];
+        } else {
+            $respuesta = [
+                'estado' => 'correcto',
+                'usuario' => $user,
+                'pass' => $pass,
+                'nombre' => $resultado -> nombre,
+                'nivel' => $resultado -> nivel,
+            ];
+            $sesion -> setSesion($user);
         }
 
     }
