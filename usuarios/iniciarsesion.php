@@ -1,6 +1,6 @@
 <?php
-    include_once 'usuario.php';
-    include_once 'sesion.php';
+    include 'usuario.php';
+    include 'sesion.php';
     $usuario = new Usuario();
     $sesion = new Sesion();
 
@@ -25,6 +25,7 @@
                 'pass' => $pass,
             ];
         } else {
+            $sesion -> setSesion($user);
             $respuesta = [
                 'estado' => 'correcto',
                 'usuario' => $user,
@@ -32,7 +33,6 @@
                 'nombre' => $resultado -> nombre,
                 'nivel' => $resultado -> nivel,
             ];
-            $sesion -> setSesion($user);
         }
 
     }
