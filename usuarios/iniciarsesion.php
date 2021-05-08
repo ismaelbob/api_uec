@@ -5,6 +5,7 @@
     $usuario = new Usuario();
 
     header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Credentials: true');
 
     $data = json_decode(file_get_contents('php://input'));
 
