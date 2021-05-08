@@ -1,8 +1,8 @@
 <?php
-    include 'usuario.php';
     include 'sesion.php';
-    $usuario = new Usuario();
+    include 'usuario.php';
     $sesion = new Sesion();
+    $usuario = new Usuario();
 
     header('Access-Control-Allow-Origin: *');
 
