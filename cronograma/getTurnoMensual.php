@@ -4,7 +4,7 @@
 
     header('Access-Control-Allow-Origin: *');
 
-    $resultado = $cronograma -> getTurnoSeMensual();
+    $resultado = $cronograma -> getTurnoMensual();
     $listado = array();
 
     foreach($resultado as $ministerio) {
