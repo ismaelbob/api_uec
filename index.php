@@ -1,3 +1,3 @@
 <?php
-    echo 'Bienvenido a UEC-API Rest';
+    echo 'Bienvenido! a UEC-API Rest';
 ?>
