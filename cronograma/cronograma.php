@@ -15,5 +15,8 @@
         public function getTurnoMensual () {
             return $con = $this -> conectar() -> query ('SELECT * FROM mes JOIN semana ON mes.idmes=semana.idmes JOIN ministerio ON ministerio.idministerio=semana.idgrupo');
         }
+        public function getTurnoMensualJovenes () {
+            return $con = $this -> conectar() -> query ('SELECT * FROM mes JOIN semana_jov ON mes.idmes=semana_jov.idmes JOIN ministerio ON ministerio.idministerio=semana_jov.idgrupo');
+        }
     }
 ?>
