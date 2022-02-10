@@ -3,13 +3,27 @@
     $cronograma = new Cronograma();
 
     header('Access-Control-Allow-Origin: *');
+    $data = json_decode(file_get_contents('php://input'));
 
-    $resultado = $cronograma -> getTurnoSemana(1,1);
-    $listado = array();
+    if ($data === null) {
+        $respuesta = [
+            'estado'=> 'no hay datos',
+        ];
+    } else {
+        $idsem = $data -> id;
 
-    foreach($resultado as $ministerio) {
-        array_push($listado, $ministerio);
+        $resultado = $cronograma -> getTurnoSemana($idsem);
+        
+        if ($resultado) {
+            $respuesta = [
+                'estado' => 'correcto',
+                'id' => '7',
+            ];
+        } else {
+            $respuesta = [
+                'estado' => 'error',
+                'id' => $id,
+            ];
+        }
     }
-
-    echo json_encode($listado);
 ?>
