@@ -32,4 +32,7 @@
             ];
         }
     }
+
+    $respuestaCodificada = json_encode($respuesta);
+    echo $respuestaCodificada;
 ?>
