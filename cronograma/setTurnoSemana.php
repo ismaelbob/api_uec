@@ -10,19 +10,24 @@
             'estado'=> 'no hay datos',
         ];
     } else {
-        $idsem = $data -> id;
+        $idsemana = $data -> idsemana;
+        $idmes = $data -> idmes;
+        $idgrupo = $data -> idgrupo;
+        $domingo = $data -> domingo;
+        $martes = $data -> martes;
+        $jueves = $data -> jueves;
 
-        $resultado = $cronograma -> getTurnoSemana($idsem);
+        //$resultado = $cronograma -> setTurnoSemana($idsemana, $idmes, $idgrupo, $domingo, $martes, $jueves);
         
         if ($resultado) {
             $respuesta = [
                 'estado' => 'correcto',
-                'id' => '7',
+                'id' => $idsemana,
             ];
         } else {
             $respuesta = [
                 'estado' => 'error',
-                'id' => $id,
+                'id' => $idsemana,
             ];
         }
     }
