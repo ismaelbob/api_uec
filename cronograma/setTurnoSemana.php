@@ -18,8 +18,9 @@
         $jueves = $data -> jueves;
 
         //$resultado = $cronograma -> setTurnoSemana($idsemana, $idmes, $idgrupo, $domingo, $martes, $jueves);
+        $resultado = 'correcto';
         
-        if ($resultado) {
+        if ($resultado === 'correcto') {
             $respuesta = [
                 'estado' => 'correcto',
                 'id' => $idsemana,
