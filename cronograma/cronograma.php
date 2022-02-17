@@ -19,7 +19,7 @@
             return 'correcto';
         }
         public function setTurnoJovenes ($idsemana_jov, $idmes, $idgrupo, $fecha) {
-            $con = $this -> conectar() -> prepare ('UPDATE semana_jov SET idmes=:mes, idgrupo=:grupo, fecha=:fec WHERE idsemana_jov');
+            $con = $this -> conectar() -> prepare ('UPDATE semana_jov SET idmes=:mes, idgrupo=:grupo, fecha=:fec WHERE idsemana_jov=$idsemana_jov');
             $con -> execute([':mes' => $idmes, ':grupo' => $idgrupo, ':fec' => $fecha, ':idsemana_jov' => $idsemana_jov]);
             $con = null;
             return 'correcto';
