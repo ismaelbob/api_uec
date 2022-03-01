@@ -12,6 +12,13 @@
             $con = null;
             return $datos;
         }
+        public function getTurnoSemanaJov ($semana) {
+            $con = $this -> conectar() -> prepare ('SELECT * FROM mes JOIN semana_jov ON mes.idmes=semana_jov.idmes JOIN ministerio ON ministerio.idministerio=semana_jov.idgrupo WHERE semana_jov.idsemana_jov=:semana');
+            $con -> execute([':semana' => $semana]);
+            $datos = $con -> fetch(PDO::FETCH_OBJ);
+            $con = null;
+            return $datos;
+        }
         public function setTurnoSemana ($idsemana, $idmes, $idgrupo, $domingo, $martes, $jueves) {
             $con = $this -> conectar() -> prepare ('UPDATE semana SET idmes=:mes , idgrupo=:grupo , domingo=:dom , martes=:mar , jueves=:jue WHERE idsemana=:sem;');
             $con -> execute([':mes' => $idmes, ':grupo' => $idgrupo, ':dom' => $domingo, ':mar' => $martes, ':jue' => $jueves, ':sem' => $idsemana]);
