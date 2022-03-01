@@ -10,7 +10,7 @@
             'estado'=> 'no hay datos',
         ];
     } else {
-        $idsemana = $data -> idsemana;
+        $idsemana = $data -> idsemana_jov;
         $idmes = $data -> idmes;
         $idgrupo = $data -> idgrupo;
         $fecha = $data -> fecha;
