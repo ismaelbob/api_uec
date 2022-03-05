@@ -14,7 +14,7 @@
         $mes = $data -> nom_mes;
   
 
-        $resultado = $cronograma -> setMes($idmes, $mes)
+        $resultado = $cronograma -> setMes($idmes, $mes);
         
         if ($resultado === 'correcto') {
             $respuesta = [
