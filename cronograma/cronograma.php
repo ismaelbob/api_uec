@@ -38,5 +38,22 @@
         public function getTurnoMensualJovenes () {
             return $con = $this -> conectar() -> query ('SELECT * FROM mes JOIN semana_jov ON mes.idmes=semana_jov.idmes JOIN ministerio ON ministerio.idministerio=semana_jov.idgrupo');
         }
+
+        public function getListaMeses () {
+            return $con = $this -> conectar() -> query('SELECT * FROM mes;');
+        }
+        public function getMes ($id) {
+            $con = $this -> conectar() -> prepare('SELECT * FROM mes WHERE idmes=:id');
+            $con -> execute([':id' => $id]);
+            $datos = $con -> fetch(PDO::FETCH_OBJ);
+            $con = null;
+            return $datos;
+        }
+        public function setMes($idmes, $mes) {
+            $con = $this -> conectar() -> prepare ('UPDATE mes SET nom_mes=:mes WHERE idmes=:id');
+            $con -> execute ([':mes' => $mes, ':id' => $idmes]);
+            $con = null;
+            return 'correcto';
+        }
     }
 ?>
