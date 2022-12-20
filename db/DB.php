@@ -15,10 +15,17 @@
             $this->charset = "utf8mb4";*/
 
             // Para Clever Cloud
-            $this->servidor = "bqxxgnvj9oydsxmmdxy2-mysql.services.clever-cloud.com";
+            /*$this->servidor = "bqxxgnvj9oydsxmmdxy2-mysql.services.clever-cloud.com";
             $this->usuario = "ukx6ly9c1qwbzo8z";
             $this->pass = "aovP8aCVTwOvaDTwQ4E3";
             $this->database = "bqxxgnvj9oydsxmmdxy2";
+            $this->charset = "utf8mb4";*/
+            
+            // Para 000Webhost
+            $this->servidor = "localhost";
+            $this->usuario = "id20042840_ismaelbob";
+            $this->pass = "K<3chaGKTEbBwzi";
+            $this->database = "id20042840_uecapi";
             $this->charset = "utf8mb4";
         }
 
